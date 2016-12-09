@@ -161,21 +161,49 @@ body {
   }
 }
 
-@media (min-width: 601px) {
-
-  /*nav {
-    margin: 0 -5%;
-  }*/
-
-  #pet-icon {
-    display: none;
+@media only screen and (min-width: 320px) and (max-width: 374px){
+  #paw-icon {
+    zoom: 0.65;
+    margin: 0 18%;
   }
 
+  .pet-card {
+    width: 90%;
+  }
+
+  .icons-row {
+    margin: -5% 32%;
+    height: 90px;
+  }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 375px) and (max-width: 413px){
+  #paw-icon {
+    zoom: 0.65;
+    margin: 0 22%;
+  }
+  .pet-card {
+    width: 95%;
+  }
 
-  /*#pet-icon {
-    margin: -10px 35%;
-  }*/
+  .icons-row {
+    margin: -5% 35%;
+    height: 90px;
+  }
+}
+
+@media only screen and (min-width: 413px){
+  #paw-icon {
+    zoom: 0.75;
+    margin: 0 22%;
+  }
+
+  .pet-card {
+    width: 95%;
+  }
+
+  .icons-row {
+    margin: -5% 36%;
+    height: 90px;
+  }
 }
