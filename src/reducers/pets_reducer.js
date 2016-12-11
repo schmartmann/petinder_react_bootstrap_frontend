@@ -38,7 +38,7 @@ export default function(state = INITIAL_STATE, action){
           city: current_pet.city,
           state: current_pet.state,
           description: current_pet.description,
-          pet_id: current_pet.pet_id,
+          pet_id: current_pet.id,
           name: current_pet.name,
           photo: current_pet.photo,
           link: current_pet.link
@@ -56,13 +56,32 @@ export default function(state = INITIAL_STATE, action){
           city: new_current_pet.city,
           state: new_current_pet.state,
           description: new_current_pet.description,
-          pet_id: new_current_pet.pet_id,
+          pet_id: new_current_pet.id,
           name: new_current_pet.name,
           photo: new_current_pet_photos,
           link: new_current_pet.link
         },
         pet_batch: new_pet_batch
       };
+    case 'SAVE_PET':
+      console.log("SAVE_PET firing: ", action.payload);
+      new_current_pet = action.payload.nextPet;
+      new_pet_batch = action.payload.petsBatch;
+      console.log("new current_pet: ", new_current_pet.photo)
+      new_current_pet_photos = sortPhotos(new_current_pet.photo);
+      return {
+        current_pet: {
+          animal: new_current_pet.animal,
+          city: new_current_pet.city,
+          state: new_current_pet.state,
+          description: new_current_pet.description,
+          pet_id: new_current_pet.id,
+          name: new_current_pet.name,
+          photo: new_current_pet_photos,
+          link: new_current_pet.link
+        },
+        pet_batch: new_pet_batch
+      }
     default:
       console.log("no pet loaded");
       return state;

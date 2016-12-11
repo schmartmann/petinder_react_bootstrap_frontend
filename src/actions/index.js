@@ -28,12 +28,24 @@ export function nextPet(props){
 }
 
 export function savePet(props){
-  console.log("NICE", props)
-  let savedPet = props.current_pet;
-  let nextPet = props.pet_batch[0];
+  let savedPet = props.saved_pet;
+  console.log("NICE", savedPet)
+
+  //this is where savedPet goes to the database;
+  
+  let strWindowFeatures = "location=yes,height=570,width=520,scrollbars=yes,status=yes";
+  let petfinderUrl = "https://www.petfinder.com/adoption-inquiry/" + savedPet.pet_id;
+  let petfinderWin = window.open(petfinderUrl, "_blank", strWindowFeatures);
+  let nextPet = props.pets_batch.shift();
+  let petsBatch = props.pets_batch;
+
+  let payload = {
+    nextPet: nextPet,
+    petsBatch: petsBatch
+  }
   return {
     type: SAVE_PET,
-    payload: nextPet
+    payload: payload
   }
 }
 

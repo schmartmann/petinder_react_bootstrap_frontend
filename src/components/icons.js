@@ -29,8 +29,11 @@ class Icons extends Component {
     this.props.nextPet(this.props.pet)
   }
   saveButton(){
-    console.log(this.props)
-    this.props.savePet(this.props.pet)
+    console.log("save buttoN:", this.props.pet);
+    let saved_pet = this.props.pet.current_pet;
+    let pets_batch = this.props.pet.pet_batch;
+    let bundle = {saved_pet : saved_pet, pets_batch: pets_batch}
+    this.props.savePet(bundle);
   }
   render(){
     return(
