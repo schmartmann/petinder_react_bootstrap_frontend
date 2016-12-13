@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ROOT_URL = 'http://localhost:3000/api/v1'
+const ROOT_URL = 'http://api.petfinder.com/pet.find?'
 
 export const FETCH_MY_PET  = "FETCH_MY_PET";
 export const LOAD_PET = "LOAD_PET";
@@ -32,7 +32,7 @@ export function savePet(props){
   console.log("NICE", savedPet)
 
   //this is where savedPet goes to the database;
-  
+
   let strWindowFeatures = "location=yes,height=570,width=520,scrollbars=yes,status=yes";
   let petfinderUrl = "https://www.petfinder.com/adoption-inquiry/" + savedPet.pet_id;
   let petfinderWin = window.open(petfinderUrl, "_blank", strWindowFeatures);
@@ -62,9 +62,20 @@ export function fetchMyPetOptimistic(props){
   }
 }
 
+
+
+
+
+
+
 export function fetchMyPet(){
   return function(dispatch){
-    const url = `${ROOT_URL}/pets`;
+    let user_zip ='';
+    const url = `${ROOT_URL}?location=${user_zip}&output=full&format=json&key=key`;
+    const positionRequest = axios.get('http://ip-api.com/json').then(response => {
+      // console.log(response.data.zip)
+      user_zip = response.data.zip
+    })
     const request = axios.get(url).then(response => {
       console.log("request from actions/index.js", response)
       dispatch(fetchMyPetOptimistic(response))

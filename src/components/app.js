@@ -22,6 +22,8 @@ function mapDispatchToProps(dispatch){
 
 
 class App extends Component {
+  componentWillMount(){
+  }
   render() {
     return (
       <div>
