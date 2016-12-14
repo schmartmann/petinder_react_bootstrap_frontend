@@ -72,17 +72,18 @@ export function fetchMyPetOptimistic(props){
 
 export function fetchMyPet(){
   return function(dispatch){
-    let user_zip ='';
-    console.log(process.env.PF_KEY)
-    const url = `${ROOT_URL}location=${user_zip}&output=full&format=json&key=${process.env.PF_KEY}`;
     const positionRequest = axios.get('http://ip-api.com/json').then(response => {
       // console.log(response.data.zip)
-      user_zip = response.data.zip
+      let user_zip = response.data.zip
+
+      const url = `${ROOT_URL}location=${user_zip}&output=full&format=json&key=${process.env.PF_KEY}`;
+
+
+      axios.get(url).then(response => {
+          console.log("request from actions/index.js", response)
+          dispatch(fetchMyPetOptimistic(response))
+        });
     })
-    const request = axios.get(url).then(response => {
-      console.log("request from actions/index.js", response)
-      dispatch(fetchMyPetOptimistic(response))
-    });
     return null
   }
 }
