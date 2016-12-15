@@ -2,7 +2,9 @@ import axios from 'axios';
 
 
 
-const ROOT_URL = 'http://api.petfinder.com/pet.find?'
+// const ROOT_URL = 'http://api.petfinder.com/pet.find?'
+const ROOT_URL = "http://petinder_api.pet-tinder.com/"
+
 
 export const FETCH_MY_PET  = "FETCH_MY_PET";
 export const LOAD_PET = "LOAD_PET";
@@ -73,11 +75,9 @@ export function fetchMyPetOptimistic(props){
 export function fetchMyPet(){
   return function(dispatch){
     const positionRequest = axios.get('http://ip-api.com/json').then(response => {
-      // console.log(response.data.zip)
       let user_zip = response.data.zip
 
-      const url = `${ROOT_URL}location=${user_zip}&output=full&format=json&key=${process.env.PF_KEY}`;
-
+      const url = `${ROOT_URL}/api/v1/pets?zip=${user_zip}`
 
       axios.get(url).then(response => {
           console.log("request from actions/index.js", response)
