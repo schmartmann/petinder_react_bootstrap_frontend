@@ -55,9 +55,11 @@ export function savePet(props){
 
 export function fetchMyPetOptimistic(props){
   console.log("fetchMyPetOptimistic:", props.data)
+  let pets_batch = props.data.second;
+  let current_pet = pets_batch.shift();
   let pet = {
-    current_pet : props.data.first[0],
-    pet_batch: props.data.second
+    current_pet : current_pet,
+    pet_batch: pets_batch
   };
   console.log(pet)
   return {
