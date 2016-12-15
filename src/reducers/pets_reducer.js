@@ -15,7 +15,7 @@ const INITIAL_STATE = {
 
 
 const sortPhotos = function(arr){
-  // console.log("sortPhotos: ", arr);
+  console.log("sortPhotos: ", arr);
   let photos = [];
   for (let index of arr){
     if (index["@size"] === "x"){
@@ -32,6 +32,7 @@ export default function(state = INITIAL_STATE, action){
       console.log("LOAD_PET firing: ", action.payload)
       let current_pet = action.payload.current_pet;
       let pet_batch = action.payload.pet_batch;
+      let new_current_pet_photos = sortPhotos(current_pet.photo);
       return {
         current_pet: {
           animal: current_pet.animal,
@@ -40,7 +41,7 @@ export default function(state = INITIAL_STATE, action){
           description: current_pet.description,
           pet_id: current_pet.id,
           name: current_pet.name,
-          photo: current_pet.photo,
+          photo: new_current_pet_photos,
           link: current_pet.link
         },
         pet_batch: pet_batch
@@ -49,7 +50,7 @@ export default function(state = INITIAL_STATE, action){
       console.log("NEXT_PET firing: ", action.payload)
       let new_current_pet = action.payload[0];
       let new_pet_batch = action.payload[1];
-      let new_current_pet_photos = sortPhotos(new_current_pet.photo);
+      new_current_pet_photos = sortPhotos(new_current_pet.photo);
       return {
         current_pet: {
           animal: new_current_pet.animal,
