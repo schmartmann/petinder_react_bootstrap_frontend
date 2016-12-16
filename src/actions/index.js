@@ -1,11 +1,6 @@
 import axios from 'axios';
 
-
-
-// const ROOT_URL = 'http://api.petfinder.com/pet.find?'
 const ROOT_URL = "http://petinder_api.pet-tinder.com/"
-
-
 export const FETCH_MY_PET  = "FETCH_MY_PET";
 export const LOAD_PET = "LOAD_PET";
 export const NEXT_PET = "NEXT_PET";
@@ -34,8 +29,6 @@ export function nextPet(props){
 export function savePet(props){
   let savedPet = props.saved_pet;
   console.log("NICE", savedPet)
-
-  //this is where savedPet goes to the database;
 
   let strWindowFeatures = "location=yes,height=570,width=520,scrollbars=yes,status=yes";
   let petfinderUrl = "https://www.petfinder.com/adoption-inquiry/" + savedPet.pet_id;
@@ -67,12 +60,6 @@ export function fetchMyPetOptimistic(props){
     payload: pet
   }
 }
-
-
-
-
-
-
 
 export function fetchMyPet(){
   return function(dispatch){

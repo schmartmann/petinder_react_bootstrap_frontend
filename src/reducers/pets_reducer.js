@@ -47,7 +47,8 @@ export default function(state = INITIAL_STATE, action){
         pet_batch: pet_batch
       };
     case 'NEXT_PET':
-      console.log("NEXT_PET firing: ", action.payload)
+      console.log("NEXT_PET firing: ", action.payload);
+      if (action.payload[0] === undefined){console.log("donezo")}
       let new_current_pet = action.payload[0];
       let new_pet_batch = action.payload[1];
       new_current_pet_photos = sortPhotos(new_current_pet.photo);
