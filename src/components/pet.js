@@ -30,7 +30,6 @@ class Pet extends Component{
   componentWillMount(){
   };
   componentDidMount(){
-    console.log("current props", this.props)
   };
   truncate(){
     this.setState({truncateDesc: true})
@@ -38,10 +37,27 @@ class Pet extends Component{
   untruncate(){
     this.setState({truncateDesc: false})
   };
+  renderPhotos(){
+    console.log("photos: ", this.props.pet.current_pet.photo)
+    let photoComponents = [];
+    for (let i = 0; i < this.props.pet.current_pet.photo.length; i ++){
+      photoComponents.push(
+        <a className="carousel-item" href="#one!">
+          <img src={this.props.pet.current_pet.photo[i]}></img>
+        </a>
+      )
+    };
+    return(
+      <div className="carousel">
+        {photoComponents}
+      </div>
+    )
+  };
   render(){
     return(
       <div className="pet-card">
-        <img src={this.props.pet.current_pet.photo}></img>
+        {/* {this.renderPhotos()} */}
+            <img src={this.props.pet.current_pet.photo[0]}></img>
         <h3>
             {this.props.pet.current_pet.name}
         </h3>

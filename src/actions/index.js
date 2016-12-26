@@ -70,7 +70,7 @@ export function fetchMyPet(){
       } else {
         user_zip = response.data.zip
       }
-      const url = `${ROOT_URL}/api/v1/pets?zip=${user_zip}`
+      const url = `${ROOT_URL}api/v1/pets?zip=${user_zip}`
 
       axios.get(url).then(response => {
           console.log("request from actions/index.js", response)

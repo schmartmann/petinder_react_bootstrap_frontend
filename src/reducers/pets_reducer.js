@@ -22,7 +22,8 @@ const sortPhotos = function(arr){
       photos.push(index["$t"])
     }
   }
-  return photos[0];
+  console.log("sorted photos:", photos)
+  return photos;
 }
 
 

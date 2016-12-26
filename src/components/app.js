@@ -28,7 +28,9 @@ class App extends Component {
     return (
       <div>
         <Navbar/>
-        <Pet/>
+        <div className="petcard-container">
+          <Pet/>
+        </div>
         <div className="icons-row">
           <Icons/>
         </div>
