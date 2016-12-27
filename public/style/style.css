@@ -19,12 +19,14 @@ body {
   box-shadow: none;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin: 20px 0;
 }
 
 #paw-icon{
-  position: absolute;;
-  margin: 2% 27%;
+  position: absolute;
+  /*margin: 0 auto;*/
 }
 
 .petcard-container{
