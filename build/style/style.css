@@ -17,23 +17,20 @@ body {
 .nav-items {
   background-color: white;
   box-shadow: none;
-}
-
-.nav-items ul {
-  border: 1px solid black;
-}
-
-.nav-items a, .nav-items h1{
-  color: black;
-}
-
-.nav-items li {
-  padding-top: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 #paw-icon{
   position: absolute;;
-  margin: 0 21%;
+  margin: 5% 21%;
+}
+
+.petcard-container{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
 }
 
 .pet-card {
@@ -97,6 +94,9 @@ body {
 }
 
 .row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   height: 2em;
 }
 
@@ -163,48 +163,48 @@ body {
 }
 
 @media only screen and (min-width: 320px) and (max-width: 374px){
-  #paw-icon {
+  /*#paw-icon {
     zoom: 0.65;
     margin: 0 18%;
-  }
+  }*/
 
   .pet-card {
     width: 65%;
   }
 
-  .icons-row {
+  /*.icons-row {
     margin: -5% 32%;
     height: 90px;
-  }
+  }*/
 }
 
 @media only screen and (min-width: 375px) and (max-width: 413px){
-  #paw-icon {
+  /*#paw-icon {
     zoom: 0.65;
     margin: 0 22%;
-  }
+  }*/
   .pet-card {
     width: 65%;
   }
 
-  .icons-row {
+  /*.icons-row {
     margin: -5% 35%;
     height: 90px;
-  }
+  }*/
 }
 
 @media only screen and (min-width: 413px) and (max-width: 785px){
-  #paw-icon {
+  /*#paw-icon {
     zoom: 0.75;
     margin: 0 22%;
-  }
+  }*/
 
   .pet-card {
     width: 65%;
   }
 
-  .icons-row {
+  /*.icons-row {
     margin: -5% 36%;
     height: 90px;
-  }
+  }*/
 }

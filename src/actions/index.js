@@ -64,13 +64,15 @@ export function fetchMyPetOptimistic(props){
 export function fetchMyPet(){
   return function(dispatch){
     const positionRequest = axios.get('http://ip-api.com/json').then(response => {
-      let user_zip;
+      console.log(response)
+      let user_location;
       if (response.data.country !== "United States"){
-        user_zip = `${response.data.city}, ${response.data.regionName}`
+        let user_location = `${response.data.city}, ${response.data.regionName}`
+        console.log(user_location)
       } else {
-        user_zip = response.data.zip
+        user_location = response.data.zip
       }
-      const url = `${ROOT_URL}api/v1/pets?zip=${user_zip}`
+      const url = `${ROOT_URL}api/v1/pets?location=${user_location}`
 
       axios.get(url).then(response => {
           console.log("request from actions/index.js", response)
