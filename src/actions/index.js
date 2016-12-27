@@ -61,7 +61,9 @@ export function fetchMyPetOptimistic(props){
   }
 }
 
-export function fetchMyPet(){
+export function fetchMyPet(offset){
+  let currentOffset = offset;
+  console.log("currentOffset in actions/index", currentOffset)
   return function(dispatch){
     const positionRequest = axios.get('http://ip-api.com/json').then(response => {
       console.log(response)
@@ -72,7 +74,7 @@ export function fetchMyPet(){
       } else {
         user_location = response.data.zip
       }
-      const url = `${ROOT_URL}api/v1/pets?location=${user_location}`
+      const url = `${ROOT_URL}api/v1/pets?location=${user_location}&offset=${currentOffset}`
 
       axios.get(url).then(response => {
           console.log("request from actions/index.js", response)

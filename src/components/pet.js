@@ -23,7 +23,9 @@ class Pet extends Component{
     this.state = {
       truncateDesc: true
     }
-    this.props.fetchMyPet();
+    let offset = this.props.pet.offset
+    console.log("current offset: ", offset)
+    this.props.fetchMyPet(offset);
     this.untruncate = this.untruncate.bind(this);
     this.truncate = this.truncate.bind(this);
   };

@@ -10,7 +10,8 @@ const INITIAL_STATE = {
         description: '',
         animal: ''
       },
-    pet_batch: []
+    pet_batch: [],
+    offset: 0
 }
 
 
@@ -45,7 +46,8 @@ export default function(state = INITIAL_STATE, action){
           photo: new_current_pet_photos,
           link: current_pet.link
         },
-        pet_batch: pet_batch
+        pet_batch: pet_batch,
+        offset: state.offset + 25
       };
     case 'NEXT_PET':
       console.log("NEXT_PET firing: ", action.payload);
@@ -64,7 +66,8 @@ export default function(state = INITIAL_STATE, action){
           photo: new_current_pet_photos,
           link: new_current_pet.link
         },
-        pet_batch: new_pet_batch
+        pet_batch: new_pet_batch,
+        offset: state.offset
       };
     case 'SAVE_PET':
       console.log("SAVE_PET firing: ", action.payload);
@@ -83,7 +86,8 @@ export default function(state = INITIAL_STATE, action){
           photo: new_current_pet_photos,
           link: new_current_pet.link
         },
-        pet_batch: new_pet_batch
+        pet_batch: new_pet_batch,
+        offset: state.offset
       }
     default:
       console.log("no pet loaded");

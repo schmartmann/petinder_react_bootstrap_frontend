@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { nextPet, savePet } from '../actions/index';
+import { nextPet, savePet, fetchMyPet } from '../actions/index';
 
 function mapStateToProps(state){
   return {
@@ -12,7 +12,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
     nextPet: nextPet,
-    savePet: savePet
+    savePet: savePet,
+    fetchMyPet: fetchMyPet
   }, dispatch)
 }
 
@@ -23,17 +24,31 @@ class Icons extends Component {
     super(props);
     this.nextButton = this.nextButton.bind(this);
     this.saveButton = this.saveButton.bind(this);
+    this.checkOffset = this.checkOffset.bind(this);
+    this.state = {
+      clicks: 0
+    }
   };
   nextButton(){
-    console.log(this.props)
+    this.state.clicks++;
+    this.checkOffset();
+    console.log(this.props);
     this.props.nextPet(this.props.pet)
   }
   saveButton(){
+    this.state.clicks++;
+    this.checkOffset();
     console.log("save buttoN:", this.props.pet);
     let saved_pet = this.props.pet.current_pet;
     let pets_batch = this.props.pet.pet_batch;
     let bundle = {saved_pet : saved_pet, pets_batch: pets_batch}
     this.props.savePet(bundle);
+  }
+  checkOffset(){
+    if (this.props.pet.offset === this.state.clicks){
+      let currentOffset = this.props.pet.offset;
+      this.props.fetchMyPet(currentOffset)
+    }
   }
   render(){
     return(
