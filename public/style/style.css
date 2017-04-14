@@ -13,8 +13,7 @@ body {
   font-size: 0.75em;
 }
 
-
-.nav-items {
+/*.nav-items {
   background-color: white;
   box-shadow: none;
   display: flex;
@@ -22,12 +21,19 @@ body {
   flex-wrap: nowrap;
   justify-content: center;
   margin: 20px 0;
+}*/
+
+.navbar {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
-#paw-icon{
-  position: absolute;
-  /*margin: 0 auto;*/
-}
+/*.navbar img:hover {
+  cursor: url('./icons/paw-icon.png'), auto;
+}*/
 
 .petcard-container{
     display: flex;
@@ -67,7 +73,7 @@ body {
 
 .pet-card img {
   position: relative;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   width: 100%;
   height: 50%;
   border-top-left-radius: 10%;
